@@ -1,0 +1,19 @@
+<!-- function zip() {
+    // todo
+}
+zip(['fred', 'barney'], [30, 40], [true, false]);
+  // => [['fred', 30, true], ['barney', 40, false]] -->
+
+<script>
+    function zip(...args) {
+        let res = []
+        for (let j = 0; j < args[0].length; j++) {
+            if(!res[j]) return [];
+            for (let i = 0; i < args.length; i++) {
+                res[j].push(rea[i][j])
+            }
+        }
+    }
+
+    console.log(zip(['fred', 'barney'], [30, 40], [true, false]));
+</script>
