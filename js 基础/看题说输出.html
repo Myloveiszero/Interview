@@ -1,0 +1,35 @@
+<script>
+    window.name = 'ByteDance';
+    function A() {
+        // console.log(this);
+        // debugger;
+        console.log(this.name);
+        this.name = 123;
+    }
+    A.prototype.getA = function () {
+        console.log(this);
+        return this.name + 1;
+    }
+    A.prototype.name = 456;
+    let a = new A();//456
+    let funcA = a.getA; // window
+    console.log(funcA());//ByteDance
+    //new 的过程
+    //生成一个对象 {}
+    // {}.__proto__ = A.prototype
+    //{} 添加 name 属性
+    //return {}
+    // 我们new 的时候拿到的就是这歌 {}
+
+</script>
+<script>
+
+    function newConstructor(Constructor) {
+        let obj = {};
+        obj.__proto__ == Constructor.prototype;
+        return obj;
+        Constructor.apply(obj);
+    }
+    newConstructor(A);
+
+</script>
