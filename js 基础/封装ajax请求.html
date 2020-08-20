@@ -1,0 +1,41 @@
+<script>
+    function ajax({url, method, data, timeout}) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();//node http
+            xhr.timeout = timeout;
+            xhr.responseType = 'json'
+            xhr.open(method, url, true)
+            xhr.ontimeout = function() {
+                reject('timeout')
+            }
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4 ){
+                    if((xhr.status >= 200 && xhr.status < 300)||xhr.status === 304){
+                        resolve(xhr.response)
+                    }else {
+                    reject('respone error')
+                }
+                }
+            } 
+            // xhr.onload()
+            //数据？
+            //GET 数据要拼接到url后面
+            //POST 要看 content-type
+            // content-type 常用类型 
+            // content-type:application/json                           {a: 1, b: 2}
+            // Content-type：application/x-www-form-url-encoded         a=1&a=2
+            // content-type: text/plain                                 a=1 b=2
+            //content-type: form-data           文件                       
+            xhr.send()
+        })
+    }
+    ajax({
+        method:'GET',
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA',
+        timeout:5000
+    })
+    .then((res) =>
+        console.log(res)
+    )
+    .catch()
+</script>

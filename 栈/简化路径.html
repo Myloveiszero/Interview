@@ -1,0 +1,32 @@
+<script>
+    var simplifyPath = function (path) {
+        let simplePath = [];
+        let pathArr = path.split("/");
+        // pathArr = pathArr.filter((s) => {
+        //     return s && s.trim()
+        // });
+        for (let i = 0; i < pathArr.length; i++) {
+
+            if (pathArr[i] === ".") {
+                // i ++;
+            } else if (pathArr[i] === "..") {
+                simplePath.pop();
+            }
+            else if (pathArr[i] !== "") {
+                simplePath.push(pathArr[i])
+            }
+
+        }
+        console.log(simplePath);
+        simplePath = `/${simplePath.join('/')}`;
+        return simplePath;
+    };
+    let s = "/a/../../b/../c//.//";
+    console.log(simplifyPath(s));
+</script>
+<!-- let s = "/a//b/c/./d//../";
+let ss = s.split("/");
+ss = ss.filter((s) => {
+        return s && s.trim()
+    });
+console.log(ss); -->

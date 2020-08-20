@@ -1,0 +1,50 @@
+<!-- 题目
+薯队长写了一篇笔记草稿，请你帮忙输出最后内容。
+1.输入字符包括，"(" , ")" 和 "<"和其他字符。
+2.其他字符表示笔记内容。
+3.()之间表示注释内容，任何字符都无效。 括号保证成对出现。
+4."<"表示退格, 删去前面一个笔记内容字符。括号不受"<"影响 。
+
+输入
+Corona(Trump)USA<<<Virus
+输出
+CoronaVirus -->
+<script>
+    var noteDraft = function (text) {
+        let textArr = text.split("");
+        let finalText = [];
+        let comments1 = [];
+        let comments2 = [];
+        let res,finalRes,textArr1;
+        (function () {
+            for (let i = 0; i < textArr.length; i++) {
+                if (textArr[i] === "(") {
+                    comments1.push(i);
+                } else if (textArr[i] === ")") {
+                    comments2.push(i)
+                }
+            }
+            return [comments1, comments2];
+        }());
+         (function () {
+            for (let j = 0; j < comments1.length; j++) {
+                let textArr1 = ((textArr.splice(comments1[j], comments2[j] - comments1[j] + 1)).join(""));
+                res =  text.replace(textArr1, "");
+                // console.log( text, res)
+                return res;
+            }
+        }());
+            // console.log(res);
+        textArr = res.split("");
+        console.log(textArr)
+        for(let i = 0; i < textArr.length; i ++){
+            if(textArr[i] === "<") {
+                 textArr.splice();              
+            }
+            console.log(textArr)
+            return textArr;
+        } 
+        return finalRes.join("");
+    }
+        console.log(noteDraft("Corona(Trump)USA<<<Virus"))
+</script>

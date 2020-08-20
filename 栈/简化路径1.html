@@ -1,0 +1,20 @@
+<script>
+    function resolve(baseUrl,moudleId) {
+        let simplePath = [];
+        let pathArr = moudleId.split("/");
+        for (let i = 0; i < pathArr.length; i++) {
+            if (pathArr[i] === ".") {
+            } else if (pathArr[i] === "..") {
+                simplePath.pop();
+            }
+            else if (pathArr[i] !== "") {
+                simplePath.push(pathArr[i])
+            }
+
+        }
+        simplePath = `/${simplePath.join('/')}`;
+        return `${baseUrl}${simplePath}`;
+
+    }
+    console.log(resolve('http://www.baidu.com', 'a/b/c'))
+</script>
