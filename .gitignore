@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -131,3 +132,7 @@ dist
 # TernJS port file
 .tern-port
 
+=======
+
+js 基础/1.html
+>>>>>>> 700854e723a0e480db1f70f260285ae817559196
